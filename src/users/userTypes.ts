@@ -53,3 +53,8 @@ export interface User {
   picture : {};
   nat : string
 }
+
+export interface ResultUser {
+  result: [];
+  info : {}
+}

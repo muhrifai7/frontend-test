@@ -1,71 +1,69 @@
-import react from 'react';
+import * as React from 'react';
 import ReactDOM from "react-dom";
 import { useDebounce } from 'react-use';
+import { Container, Row, Col, Card, Button, Pagination, Spinner, Form, FormControl } from 'react-bootstrap';
+
+import { User } from '../users/userTypes';
+import Navbars from "../component/navbars"
+import UsersComp from "../component/usersComp"
+import { getRamdomUser } from "../users/userApis"
+import Gap from "../component/Gap"
 
 const Home = () => {
+    const [users, setUsers] = React.useState<any>([]);
+    const [loading, setLoading] = React.useState<boolean>(false)
+    React.useEffect(() => {
+        setLoading(prev => !prev);
+        async function serachRandomUser(page: Number, result: Number) {
+            const users = await getRamdomUser(page, result);
+            setLoading(prev => !prev);
+            setUsers(users)
+        }
+        users && serachRandomUser(1, 4);
+    }, [])
 
-    interface UserResultProps {
-        result: [] | null;
-    }
+    const Loading = () => (
+        <Spinner animation="border" variant="primary" />
+    )
 
+    return (
+        <>
+            <Navbars />
+            <Container>
+                <Row>
+                    <Col xs={2} >
+                        xs=12 md=8
+                    </Col>
+                    <Col xs={10} >
+                        <Row className="justify-content-space-between">
+                            <Col><h2>Personel List</h2><h5>List of Personal</h5></Col>
+                            <Col>
+                                <Form inline>
+                                    <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                                    <Button variant="outline-success">Search</Button>
+                                </Form>
+                            </Col>
+                        </Row>
+                        <Row className="justify-content-md-center">
+                            {loading && <Loading />}
+                            {users.map((element: any, index: Number) =>
+                                <UsersComp dataUser={element} key={index} />
+                            )}
 
+                            <Pagination>
+                                <Pagination.Prev />
+                                <p>Prev Page</p>
+                                <Gap width={10} />
+                                <p>Prev Page</p>
+                                <Pagination.Next />
+                            </Pagination>
+                        </Row>
+                    </Col>
+                </Row>
 
-
-    return (<div className="wrapper">
-        <nav id="sidebar">
-            <div className="sidebar-header">
-                <h3>Bootstrap Sidebar</h3>
-            </div>
-
-            <ul className="list-unstyled components">
-                <p>Dummy Heading</p>
-                <li className="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Home</a>
-                    <ul className="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="#">Home 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 3</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Pages</a>
-                    <ul className="collapse list-unstyled" id="pageSubmenu">
-                        <li>
-                            <a href="#">Page 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 3</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Portfolio</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-            </ul>
-        </nav>
-
-        <main>
-            <div>
-
-            </div>
-        </main>
-
-    </div>)
+            </Container>
+        </>
+    )
 }
 
 export default Home

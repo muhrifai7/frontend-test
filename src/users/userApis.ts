@@ -1,17 +1,19 @@
 import axios from "axios";
+import { ResultUser} from "./userTypes"
 
-export async function getRamdomUser (){
+export async function getRamdomUser (page:Number,result:Number){
 
     const resRandomUser = (res:[])=> {
-        console.log(res,'reeeees')
+        return res
     }
 
     try {
-        const url = `https://randomuser.me/api/?results=28`;
-        const {data} = await axios.get<[]>(url,{
+        const url = `https://randomuser.me/api/?page=${page}&results=${result}`;
+        const {data} = await axios.get<any>(url,{
             headers : {},
         });
-        return resRandomUser(data)
+        return resRandomUser(data.results)
+        
     } catch (error) {
         return []
     }
