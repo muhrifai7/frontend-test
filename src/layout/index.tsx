@@ -6,7 +6,6 @@ import Employes from "./employes"
 import Beranda from "./beranda"
 import Attedance from "./attedance"
 
-
 const Index = () => {
     return (
         <>

@@ -6,7 +6,7 @@ import { IconContext } from 'react-icons';
 import { Nav, Image } from "react-bootstrap"
 
 import { SidebarData } from './sidebarData';
-import './Navbar.css';
+import "../../assets/css/App.css"
 
 function Navbar() {
     const [sidebar, setSidebar] = useState(false);
