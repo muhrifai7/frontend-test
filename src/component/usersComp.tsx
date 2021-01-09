@@ -1,5 +1,7 @@
 import React from 'react'
 import { Card, Button, Col, Image, Row, Spinner } from "react-bootstrap"
+import moment from 'moment'
+
 import "../assets/css/App.css"
 
 import { ResultUser } from "../users/userTypes"
@@ -15,7 +17,7 @@ const UsersComp = ({ dataUser }: any) => {
 
     return (
         <Card style={{ width: '12rem', margin: "1.3rem", paddingLeft: "1rem", paddingRight: '1rem' }}>
-            <p>Personel Id : 123456</p>
+            <p>Personel Id : <span>123456</span></p>
             <hr className="solid"></hr>
             <Row className="justify-content-center mt-1 mb-1" >
                 <Image src={dataUser.picture.medium} roundedCircle />
@@ -26,7 +28,7 @@ const UsersComp = ({ dataUser }: any) => {
                 <p className="thick">Telephone</p>
                 <p>{dataUser.phone}</p>
                 <p className="thick">Birthday</p>
-                <p>{dataUser.dob.date}</p>
+                <p>{moment(dataUser.dob.date).format('MM-DD-YYYY')}</p>
                 <p className="thick">Email</p>
                 <p>{dataUser.email}</p>
             </Card.Body>
