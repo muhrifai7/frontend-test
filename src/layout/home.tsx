@@ -4,7 +4,7 @@ import { useDebounce } from 'react-use';
 import { Container, Row, Col, Card, Button, Pagination, Spinner, Form, FormControl } from 'react-bootstrap';
 
 import { User } from '../users/userTypes';
-import Navbars from "../component/navbars"
+import Navbars from "../component/navbars/navbar"
 import UsersComp from "../component/usersComp"
 import { getRamdomUser } from "../users/userApis"
 import Gap from "../component/Gap"
@@ -28,12 +28,9 @@ const Home = () => {
 
     return (
         <>
-            <Navbars />
             <Container>
                 <Row>
-                    <Col xs={2} >
-                        xs=12 md=8
-                    </Col>
+
                     <Col xs={10} >
                         <Row className="justify-content-space-between">
                             <Col><h2>Personel List</h2><h5>List of Personal</h5></Col>
