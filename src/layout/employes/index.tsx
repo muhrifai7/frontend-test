@@ -1,16 +1,14 @@
 import * as React from 'react';
-import ReactDOM from "react-dom";
-import { useDebounce } from 'react-use';
 import { Container, Row, Col, Card, Button, Pagination, Spinner, Form, FormControl } from 'react-bootstrap';
 
-import { User } from '../users/userTypes';
-import Navbars from "../component/navbars/navbar"
-import UsersComp from "../component/usersComp"
-import { getRamdomUser } from "../users/userApis"
-import Gap from "../component/Gap"
-import "../component/navbars/Navbar.css"
+import { User } from '../../users/userTypes'
+import Navbars from "../../component/navbars/navbar"
+import UsersComp from "../../component/usersComp"
+import { getRamdomUser } from "../../users/userApis"
+import Gap from "../../component/Gap"
+import "../../component/navbars/Navbar.css"
 
-const Home = () => {
+const Employes = () => {
     const [users, setUsers] = React.useState<any>([]);
     const [loading, setLoading] = React.useState<boolean>(false)
     React.useEffect(() => {
@@ -69,4 +67,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default Employes

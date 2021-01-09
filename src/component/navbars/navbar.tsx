@@ -3,7 +3,7 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { IconContext } from 'react-icons';
-
+import { Nav, Image } from "react-bootstrap"
 
 import { SidebarData } from './sidebarData';
 import './Navbar.css';
@@ -13,17 +13,27 @@ function Navbar() {
 
     const showSidebar = () => setSidebar(!sidebar); return (
         <>
-            <IconContext.Provider value={{ color: '#fff' }}>
+            <IconContext.Provider value={{ color: '#000000' }}>
                 <div className='navbar'>
-                    <Link to='#' className='menu-bars'>
-                        <FaIcons.FaBars onClick={showSidebar} />
-                    </Link>
+                    <div style={{ display: 'flex', flexDirection: 'row' }}>
+                        <Link to='#' className='menu-bars' onClick={showSidebar} >
+                            <h5>Gadjian</h5>
+                        </Link>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'row' }}>
+                        <Nav.Item>
+                            <Nav.Link href="/home">Hallo , Gajian User</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Image src="https://randomuser.me/api/portraits/thumb/women/10.jpg" roundedCircle />
+                        </Nav.Item>
+                    </div>
                 </div>
                 <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
                     <ul className='nav-menu-items' onClick={showSidebar}>
                         <li className='navbar-toggle'>
                             <Link to='#' className='menu-bars'>
-                                <AiIcons.AiOutlineClose />
+                                <AiIcons.AiOutlineClose color="#81ecec" />
                             </Link>
                         </li>
                         {SidebarData.map((item, index) => {

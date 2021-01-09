@@ -1,3 +1,26 @@
+body {
+     width: 100%;
+     height: 100%;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 7px;
+}
+.thick {
+    font-weight: bold;
+}
+
+hr.solid {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-top: 1px solid #000;
+}
+
+.card-body{
+    padding: 0;
+}
+
 .navbar {
     background-color: #ffffff;
     height: 80px;
@@ -83,8 +106,8 @@ span {
 .main-panel {
     background-color: #d6dbe0;
     padding: 10px 10px;
-     overflow: auto;
-     box-sizing: border-box;
+    overflow: auto;
+    box-sizing: border-box;
 }
 
 .row {
