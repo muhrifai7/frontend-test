@@ -138,6 +138,12 @@ span {
         flex-wrap: wrap;
 }
 
+.custom-card {
+    max-width: 12rem;
+    margin: 1rem;
+    padding: 0 1rem 0 1rem;
+}
+
 .card-custom {
      flex: 1;
      box-sizing: border-box;
@@ -191,6 +197,9 @@ span {
     .card-content-custom {
         display: flex;
         flex-direction: row;
+    }
+    .custom-card {
+        max-width: none;
     }
 }
 

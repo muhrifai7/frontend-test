@@ -1,14 +1,8 @@
 import React from 'react'
-import { Card, Button, Col, Image, Row, Spinner } from "react-bootstrap"
+import { Card, Image, Row, Spinner } from "react-bootstrap"
 import moment from 'moment'
 
 import "../assets/css/App.css"
-
-import { ResultUser } from "../utils/userTypes"
-
-interface UsersResultProps {
-    result: []
-}
 
 const UsersComp = ({ dataUser }: any) => {
     if (dataUser == null) return (
@@ -16,7 +10,7 @@ const UsersComp = ({ dataUser }: any) => {
     )
 
     return (
-        <Card style={{ maxWidth: '12rem', margin: "1rem", paddingLeft: "1rem", paddingRight: '1rem' }}>
+        <Card className="custom-card">
             <p>Personel Id : <span>123456</span></p>
             <hr className="solid"></hr>
             <Row className="justify-content-center mt-1 mb-1" >
