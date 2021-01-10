@@ -49,12 +49,7 @@ hr.solid {
     z-index: 100;
 }
 
-/* @media only screen and (min-width: 600px) {
-    .nav-menu {
-        left: 0;
-        transition: 350ms;
-    }
-} */
+
 .nav-menu.active {
     left: 0;
     transition: 350ms;
@@ -72,7 +67,7 @@ hr.solid {
 
 .nav-text a {
     text-decoration: none;
-    color: #55efc4;
+    color: #2c3130;
     font-size: 18px;
     width: 95%;
     height: 100%;
@@ -112,4 +107,132 @@ span {
 
 .row {
     justify-content: center !important;
+}
+
+.heading {
+    justify-content: space-between;
+    background-color: #ffffff;
+}
+
+.heading-title {
+    flex: 1;
+    box-sizing: border-box;
+    flex-basis: 30%;
+    padding:1px;
+    align-items: center;
+}
+
+@media only screen and (min-width: 900px) {
+    .heading {
+        display: flex;
+    }
+    .heading-title {
+        display: flex;
+    }
+    
+    
+}
+
+.card-container-custom {
+     display: flex;
+        flex-wrap: wrap;
+}
+
+.card-custom {
+     flex: 1;
+     box-sizing: border-box;
+     flex-basis: 20%;
+     padding:1px;
+     align-items: center;
+     background-color: #33ac3d;
+     background-clip: border-box;
+     border: 1px solid rgba(0, 0, 0, .125);
+     border-radius: .25rem;
+     display: flex;
+     flex-direction: column;
+}
+
+.card-body-custom {
+     min-width: -webkit-fill-available;
+     background-color: red;
+     padding:1rem;
+     justify-content: space-around;
+}
+
+.card-image-custom {
+    text-align: center;
+}
+.card-header-custom {
+     flex: 1;
+     box-sizing: border-box;
+     flex-basis: 30%;
+     padding:1px;
+     align-items: center;
+     background-color: aqua;
+     min-width: -webkit-fill-available;
+     justify-content: space-between;
+     display: flex;
+     padding:0 10px;
+}
+
+.wraper-icon {
+    text-align: end;
+}
+
+
+@media only screen and (max-width: 900px) {
+    #user-title {
+        display: none;
+    }
+    .card-body-custom {
+        display: flex;
+    }
+
+    .card-content-custom {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+
+.wraperAction {
+    flex: 1;
+    margin : 1rem
+}
+
+.add-button {
+    flex:1;
+    display: flex;
+    text-align: center;
+    line-height: 45px;
+    justify-content: space-around;
+    background-color: #55efc4;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+a {
+    color: #55efc4;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #55efc4;
+    text-decoration: none;
+}
+
+input[type=text],
+select {
+    width: 100%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+h5 {
+    color : #55efc4
 }

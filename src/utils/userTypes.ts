@@ -55,6 +55,6 @@ export interface User {
 }
 
 export interface ResultUser {
-  result: [];
+  results: [];
   info : {}
 }

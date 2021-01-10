@@ -9,12 +9,13 @@ export async function getRamdomUser (page:Number,result:Number){
 
     try {
         const url = `https://randomuser.me/api/?page=${page}&results=${result}`;
-        const {data} = await axios.get<any>(url,{
+        const {data} = await axios.get<ResultUser>(url,{
             headers : {},
         });
         return resRandomUser(data.results)
         
     } catch (error) {
+        throw error
         return []
     }
 }

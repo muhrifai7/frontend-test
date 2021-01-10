@@ -4,7 +4,7 @@ import moment from 'moment'
 
 import "../assets/css/App.css"
 
-import { ResultUser } from "../users/userTypes"
+import { ResultUser } from "../utils/userTypes"
 
 interface UsersResultProps {
     result: []
@@ -16,7 +16,7 @@ const UsersComp = ({ dataUser }: any) => {
     )
 
     return (
-        <Card style={{ width: '12rem', margin: "1.3rem", paddingLeft: "1rem", paddingRight: '1rem' }}>
+        <Card style={{ maxWidth: '12rem', margin: "1rem", paddingLeft: "1rem", paddingRight: '1rem' }}>
             <p>Personel Id : <span>123456</span></p>
             <hr className="solid"></hr>
             <Row className="justify-content-center mt-1 mb-1" >

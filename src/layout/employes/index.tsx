@@ -1,30 +1,60 @@
 import * as React from 'react';
-import { Container, Row, Col, Card, Button, Pagination, Spinner, Form, FormControl } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, Pagination, Spinner, Alert, FormControl, Image } from 'react-bootstrap';
 import { useDebounce } from 'react-use';
+import * as AiIcons from 'react-icons/ai';
 
-import { User } from '../../users/userTypes'
+import { User } from '../../utils/userTypes'
 import Navbars from "../../component/navbars/navbar"
 import UsersComp from "../../component/usersComp"
-import { getRamdomUser } from "../../users/userApis"
+import { getRamdomUser } from "../../utils/userApis"
 import Gap from "../../component/Gap"
 import "../../assets/css/App.css"
 
 const Employes = () => {
     const [val, setVal] = React.useState('');
-
+    const [error, setError] = React.useState(false)
     const [state, setState] = React.useState(0)
-    const [users, setUsers] = React.useState<any>([]);
+    const [users, setUsers] = React.useState([]);
+    const [newUsers, setNewUsers] = React.useState();
     const [loading, setLoading] = React.useState<boolean>(false)
+
     React.useEffect(() => {
         users && getUsers(1, 4);
     }, [])
 
+
+
     const getUsers = async (page: number, result: number) => {
-        setLoading(prev => !prev);
-        const users = await getRamdomUser(page, result);
-        setLoading(prev => !prev);
-        setUsers(users)
+        try {
+            setLoading(prev => !prev);
+            const users = await getRamdomUser(page, result);
+            setLoading(prev => !prev);
+            setError(false)
+            setUsers(users)
+        } catch (error) {
+            setError(true)
+            console.log(error)
+        }
+
     }
+
+    function UsePersistedState() {
+        // const data = JSON.parse(localStorage.getItem("@users") || '{}');
+        const [test, setTest] = React.useState(
+            'qqqqq'
+        );
+
+        const setPersist = (newItem: any) => {
+
+            // localStorage.setItem("@users", newItem)
+            setTest('nwItem')
+        }
+
+        return [test, setPersist];
+    }
+
+    const [a, v] = UsePersistedState()
+    console.log(v, 'rrrr', a)
 
     useDebounce(
         () => {
@@ -40,15 +70,20 @@ const Employes = () => {
             }
             val && searchByName(val);
         },
-        2000,
+        1000,
         [val]
     );
 
 
-
     const Loading = () => (
         <Row className="justify-content-center">
-            <Spinner animation="border" variant="primary" />
+            <div>
+                <Spinner animation="border" variant="primary" />
+                {error && <Alert variant="danger">
+                    Something When Wrong
+             </Alert>}
+
+            </div>
         </Row>
     )
 
@@ -65,21 +100,31 @@ const Employes = () => {
         <div className="main-panel">
             <Container>
                 <Row>
-
                     <Col xs={10} >
-                        <Row className="justify-content-space-between">
-                            <Col><h2>Personel List</h2><h5>List of Personal</h5></Col>
-                            <Col style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                                <Form inline>
-                                    <FormControl type="text" placeholder="Find Personel" className="mr-sm-2" onChange={({ currentTarget }) => {
+                        <div className="heading">
+                            <div className="heading-title">
+                                <Col><h5>Personel List</h5><h6>List of Personal</h6></Col>
+                                {/* <button onClick={() => setPersist('wwwww')}>pppppp</button> */}
+                            </div>
+                            <div className="heading-title">
+                                <div className="wraperAction">
+                                    <input type="text" placeholder="Find Personel" className="mr-sm-2" onChange={({ currentTarget }) => {
                                         setVal(currentTarget.value);
                                     }} />
-                                    <Button variant="outline-success">Add Personel</Button>
-                                </Form>
-                            </Col>
-                        </Row>
+                                </div>
+                                <div className="wraperAction">
+                                    <div className="add-button">
+                                        <div>Add Personel</div>
+                                        <div> <AiIcons.AiFillPlusCircle color="white" size={30} /></div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
                         {loading && <Loading />}
-                        <Row className="justify-content-space-around">
+                        <Row>
                             {users.map((element: any, index: Number) =>
                                 <UsersComp dataUser={element} key={index} />
                             )}

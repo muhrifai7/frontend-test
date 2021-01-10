@@ -10,6 +10,7 @@ import "../../assets/css/App.css"
 
 function Navbar() {
     const [sidebar, setSidebar] = useState(false);
+    const currentRoute = window.location.pathname
 
     const showSidebar = () => setSidebar(!sidebar); return (
         <>
@@ -21,7 +22,7 @@ function Navbar() {
                         </Link>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
-                        <Nav.Item>
+                        <Nav.Item id="user-title">
                             <Nav.Link href="/home">Hallo , Gajian User</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
@@ -37,11 +38,13 @@ function Navbar() {
                             </Link>
                         </li>
                         {SidebarData.map((item, index) => {
+                            let fil = "";
+                            if (item.path == currentRoute) { fil = "#81ecec" }
                             return (
-                                <li key={index} className={item.cName}>
-                                    <Link to={item.path}>
+                                <li key={index} className={item.cName} >
+                                    <Link to={item.path} >
                                         {item.icon}
-                                        <span>{item.title}</span>
+                                        <span style={{ color: fil }}>{item.title}</span>
                                     </Link>
                                 </li>
                             );
