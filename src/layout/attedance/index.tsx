@@ -5,7 +5,6 @@ import "../../assets/css/App.css"
 
 
 const Attedance: React.FC<any> = () => {
-    const [value, setValue] = React.useState('');
 
     return (
         <div>

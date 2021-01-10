@@ -5,7 +5,6 @@ import "../../assets/css/App.css"
 
 
 const Beranda: React.FC<any> = () => {
-    const [value, setValue] = React.useState('');
 
     return (
         <div >

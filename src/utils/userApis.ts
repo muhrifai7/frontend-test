@@ -16,6 +16,5 @@ export async function getRamdomUser (page:Number,result:Number){
         
     } catch (error) {
         throw error
-        return []
     }
 }
