@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card, Image, Row, Spinner } from "react-bootstrap"
 import moment from 'moment'
+import * as AiIcons from 'react-icons/ai';
 
 import "../assets/css/App.css"
 
@@ -14,21 +15,30 @@ const UsersComp = ({ dataUser }: any) => {
 
     return (
         <Card className="custom-card">
-            <p>Personel Id : <span>123456</span></p>
+            <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", marginTop: "5px " }}>
+                <p>Personel Id : <span>123456</span></p>
+                <AiIcons.AiFillSetting color="#b2bec3" /></div>
+
             <hr className="solid"></hr>
-            <Row className="justify-content-center mt-1 mb-1" >
-                <Image src={dataUser?.picture?.medium} roundedCircle />
-            </Row>
-            <Card.Body>
-                <p className="thick">Name</p>
-                <p>{dataUser?.name?.first}</p>
-                <p className="thick">Telephone</p>
-                <p>{dataUser?.phone}</p>
-                <p className="thick">Birthday</p>
-                <p>{moment(dataUser?.dob?.date).format('MM-DD-YYYY')}</p>
-                <p className="thick">Email</p>
-                <p>{dataUser?.email}</p>
-            </Card.Body>
+            <div className="custom-card-body">
+                <Row className="wraperIcon" >
+                    <Image src={dataUser?.picture?.medium} roundedCircle />
+                </Row>
+                <Card.Body>
+                    <div>
+                        <p className="thick">Name</p>
+                        <p>{dataUser?.name?.first}</p>
+                        <p className="thick">Telephone</p>
+                        <p>{dataUser?.phone}</p>
+                    </div>
+                    <div className="custom-card-content">
+                        <p className="thick">Birthday</p>
+                        <p>{moment(dataUser?.dob?.date).format('MM-DD-YYYY')}</p>
+                        <p className="thick">Email</p>
+                        <p>{dataUser?.email}</p>
+                    </div>
+                </Card.Body>
+            </div>
         </Card>
     )
 }

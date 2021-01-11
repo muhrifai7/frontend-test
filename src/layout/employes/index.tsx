@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Container, Row, Col, Pagination, Spinner, Alert } from 'react-bootstrap';
 import { useDebounce } from 'react-use';
 import * as AiIcons from 'react-icons/ai';
+
+import Gap from "../../component/Gap"
 import UsersComp from "../../component/usersComp"
 import { getRamdomUser } from "../../utils/userApis"
 import "../../assets/css/App.css"
@@ -59,7 +61,7 @@ const Employes: React.FC = () => {
             }
             val && searchByName(val);
         },
-        2000,
+        1000,
         [val]
     );
 
@@ -113,17 +115,19 @@ const Employes: React.FC = () => {
                         </div>
 
                         {loading && <Loading />}
-                        <Row>
+                        <Row className="wraper-cards">
                             {newUsers?.map((element: any, index: number) =>
                                 <UsersComp dataUser={element} key={index} />
                             )}
 
 
                         </Row>
+                        <Gap height={"12px"} />
                         <Row className="justify-content-center">
                             <Pagination>
                                 <Pagination.First disabled={state === 0} onClick={() => handleBackPage()} />
                                 <Pagination.Item active={state >= 1}>{"Prev Page"}</Pagination.Item>
+                                <Gap width={"10px"} />
                                 <Pagination.Item active={state <= 2}>{"Next page"}</Pagination.Item>
                                 <Pagination.Last disabled={state === 3} onClick={() => handleNextPage()} />
                             </Pagination>

@@ -17,7 +17,7 @@ export const SidebarData = [
         cName: 'nav-text'
     },
     {
-        title: 'Daily Attandence',
+        title: 'Attandence',
         path: '/attendance',
         icon: <FaIcons.FaCartPlus color="#81ecec" />,
         cName: 'nav-text'

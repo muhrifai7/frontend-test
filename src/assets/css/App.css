@@ -4,9 +4,21 @@ body {
 }
 
 p {
-    margin-top: 0;
-    margin-bottom: 7px;
+    font-size: 14px;
+    font-family: charter,
+        Georgia,
+        Cambria,
+        "Times New Roman",
+        Times,
+        serif;
+        margin-top: 0;
+        margin-bottom: 7px;
 }
+svg {
+    cursor: pointer;
+}
+
+
 .thick {
     font-weight: bold;
 }
@@ -96,6 +108,7 @@ hr.solid {
 
 span {
     margin-left: 10px;
+    color: #55efc4;
 }
 
 .main-panel {
@@ -140,8 +153,12 @@ span {
 
 .custom-card {
     max-width: 12rem;
-    margin: 1rem;
+    margin-top: 1rem;
     padding: 0 1rem 0 1rem;
+}
+
+.wraper-cards {
+    justify-content: space-around !important;
 }
 
 .card-custom {
@@ -199,7 +216,14 @@ span {
         flex-direction: row;
     }
     .custom-card {
-        max-width: none;
+        min-width: 90%;
+    }
+    .custom-card-body {
+        display: flex;
+        align-items: center;
+    }
+    .custom-card-content {
+        display: none;
     }
 }
 
@@ -207,6 +231,11 @@ span {
 .wraperAction {
     flex: 1;
     margin : 1rem
+}
+
+.wraperIcon {
+    display: flex;
+    margin: 10px;
 }
 
 .add-button {
