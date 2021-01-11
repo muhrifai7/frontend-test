@@ -7,7 +7,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 A simple app to search random users
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-DEMO: https://
+DEMO: https://indochat-test-e94db.web.app/ [![Up to Date](https://github.com/ikatyang/emoji-cheat-sheet/workflows/Up%20to%20Date/badge.svg)](https://github.com/ikatyang/emoji-cheat-sheet/actions?query=workflow%3A%22Up+to+Date%22)
 
 ## Available Scripts
 
