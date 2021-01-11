@@ -25,7 +25,7 @@ export const useLocalStorage = (
             }
         }
 
-    }, [state])
+    }, [state, key])
 
     return [state, setState]
 }

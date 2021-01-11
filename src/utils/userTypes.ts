@@ -6,7 +6,7 @@ export interface Names {
 
 export interface Coordinates {
     latitude : string
-    longtitude : string
+    longitude : string
 }
 
 export interface TimeZone {
@@ -20,7 +20,7 @@ export interface LocationCoord {
   city: string;
   state : string;
   country: string;
-  postCode: Number;
+  postcode: string;
   coordinates : Coordinates;
   timezone : TimeZone
 }
@@ -36,20 +36,20 @@ export interface Login {
 }
 
 export interface Dob {
-    date : Date;
+    date : string;
     age : Number
 }
 
 export interface User {
   gender: string;
   name: Names;
-  loction : LocationCoord;
+  location : LocationCoord;
   email : string;
   login : Login;
   dob : Dob;
   registered : Dob;
-  phone : Number;
-  cell : Number;
+  phone : string;
+  cell : string;
   picture : {};
   nat : string
 }

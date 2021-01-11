@@ -11,42 +11,36 @@ const Employes: React.FC = () => {
     const [val, setVal] = React.useState('');
     const [error, setError] = React.useState(false)
     const [state, setState] = React.useState(0)
-    const [users, setUsers] = React.useState([]);
     const [newUsers, setNewUsers] = useLocalStorage("@users");
-    const [loading, setLoading] = React.useState<boolean>(false)
+    const [loading, setLoading] = React.useState<boolean>(true)
 
     const getFirstUsers = React.useCallback(async (page: number, result: number) => {
         try {
-            setLoading(prev => !prev);
             if (!newUsers) {
                 const users = await getRamdomUser(page, result);
                 setNewUsers(users)
             }
-            setLoading(prev => !prev);
-            setError(false)
+            setLoading(false);
         } catch (error) {
             setError(true)
-            console.log(error)
         }
 
     }, [newUsers, setNewUsers])
 
     React.useEffect(() => {
-        users && getFirstUsers(1, 4)
-    }, [getFirstUsers, users])
+        newUsers && getFirstUsers(1, 4)
+    }, [getFirstUsers, newUsers])
 
 
     const getUsers = async (page: number, result: number) => {
         try {
-            setLoading(prev => !prev);
+            setLoading(true);
             const users = await getRamdomUser(page, result);
-            setLoading(prev => !prev);
             setError(false)
             setNewUsers(users)
-            setUsers(users)
+            setLoading(false);
         } catch (error) {
             setError(true)
-            console.log(error)
         }
 
     }
@@ -120,7 +114,7 @@ const Employes: React.FC = () => {
 
                         {loading && <Loading />}
                         <Row>
-                            {newUsers.map((element: any, index: number) =>
+                            {newUsers?.map((element: any, index: number) =>
                                 <UsersComp dataUser={element} key={index} />
                             )}
 
@@ -130,7 +124,7 @@ const Employes: React.FC = () => {
                             <Pagination>
                                 <Pagination.First disabled={state === 0} onClick={() => handleBackPage()} />
                                 <Pagination.Item active={state >= 1}>{"Prev Page"}</Pagination.Item>
-                                <Pagination.Item active={state <= 1}>{"Next page"}</Pagination.Item>
+                                <Pagination.Item active={state <= 2}>{"Next page"}</Pagination.Item>
                                 <Pagination.Last disabled={state === 3} onClick={() => handleNextPage()} />
                             </Pagination>
 
