@@ -1,6 +1,13 @@
+
+/**
+ * main route component
+ */
+
 import * as React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+// nodejs library to set properties for components
 
+// My components
 import Navbars from "../component/navbars/navbar"
 import Employes from "./employes"
 import Beranda from "./beranda"

@@ -1,3 +1,10 @@
+/**
+ * Configuration Api With Pagination
+ * @param page : Number of page 
+ * default to 1
+ * @param result Number of total User 
+ * default to 4
+ */
 import axios from "axios";
 import { ResultUser} from "./userTypes"
 

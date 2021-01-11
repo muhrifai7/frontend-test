@@ -1,8 +1,14 @@
+/**
+ * Employe component
+ */
+
 import * as React from 'react';
 import { Container, Row, Col, Pagination, Spinner, Alert } from 'react-bootstrap';
 import { useDebounce } from 'react-use';
 import * as AiIcons from 'react-icons/ai';
+// nodejs library to set properties for components
 
+// My components
 import Gap from "../../component/Gap"
 import UsersComp from "../../component/usersComp"
 import { getRamdomUser } from "../../utils/userApis"
@@ -13,8 +19,15 @@ const Employes: React.FC = () => {
     const [val, setVal] = React.useState('');
     const [error, setError] = React.useState(false)
     const [state, setState] = React.useState(0)
+    /**
+    * Store (persist state) use local storage
+    */
     const [newUsers, setNewUsers] = useLocalStorage("@users");
     const [loading, setLoading] = React.useState<boolean>(true)
+
+    /**
+    * A function get persist state only run when component rendered 
+    */
 
     const getFirstUsers = React.useCallback(async (page: number, result: number) => {
         try {
@@ -33,7 +46,9 @@ const Employes: React.FC = () => {
         newUsers && getFirstUsers(1, 4)
     }, [getFirstUsers, newUsers])
 
-
+    /**
+    * Invoke api random user and save to local storage by clicked next & prev page 
+    */
     const getUsers = async (page: number, result: number) => {
         try {
             setLoading(true);
@@ -47,11 +62,14 @@ const Employes: React.FC = () => {
 
     }
 
+    /**
+    * Optim input search user by firstname 
+    */
     useDebounce(
         () => {
             async function searchByName(val: string) {
                 let newUser = newUsers.filter((element: any) => {
-                    return element.name.first.toLowerCase() == val.toLowerCase()
+                    return element.name.first.toLowerCase() == val
                 })
                 setLoading(prev => !prev);
                 setTimeout(() => {
@@ -69,7 +87,7 @@ const Employes: React.FC = () => {
     const Loading = () => (
         <Row className="justify-content-center">
             <div>
-                <Spinner animation="border" variant="primary" />
+                <Spinner animation="border" variant="primary" title="Loading" />
                 {error && <Alert variant="danger">
                     Something When Wrong
              </Alert>}
@@ -78,11 +96,13 @@ const Employes: React.FC = () => {
         </Row>
     )
 
-    const handleNextPage = () => {
-        setState(prev => prev + 1); getUsers(state, 4)
-    }
-    const handleBackPage = () => {
-        setState(prev => prev - 1); getUsers(state, 4)
+    const handlePage = (type: string) => {
+        if (type === "next") {
+            setState(prev => prev + 1); getUsers(state, 4)
+        }
+        if (type === "prev") {
+            setState(prev => prev - 1); getUsers(state, 4)
+        }
     }
 
 
@@ -100,7 +120,7 @@ const Employes: React.FC = () => {
                             <div className="heading-title">
                                 <div className="wraperAction">
                                     <input type="text" placeholder="Find Personel" className="mr-sm-2" onChange={({ currentTarget }) => {
-                                        setVal(currentTarget.value);
+                                        setVal(currentTarget.value.toLowerCase());
                                     }} />
                                 </div>
                                 <div className="wraperAction">
@@ -125,11 +145,11 @@ const Employes: React.FC = () => {
                         <Gap height={"12px"} />
                         <Row className="justify-content-center">
                             <Pagination>
-                                <Pagination.First disabled={state === 0} onClick={() => handleBackPage()} />
+                                <Pagination.First disabled={state === 0} onClick={() => handlePage("prev")} />
                                 <Pagination.Item active={state >= 1}>{"Prev Page"}</Pagination.Item>
                                 <Gap width={"10px"} />
                                 <Pagination.Item active={state <= 2}>{"Next page"}</Pagination.Item>
-                                <Pagination.Last disabled={state === 3} onClick={() => handleNextPage()} />
+                                <Pagination.Last disabled={state === 3} onClick={() => handlePage("next")} />
                             </Pagination>
 
                         </Row>

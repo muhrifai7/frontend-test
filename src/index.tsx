@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Index from './layout/index';
 import reportWebVitals from './reportWebVitals';

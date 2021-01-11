@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Row, Jumbotron } from 'react-bootstrap'
+// nodejs library to set properties for components
 
+// My components
 import "../../assets/css/App.css"
 
 

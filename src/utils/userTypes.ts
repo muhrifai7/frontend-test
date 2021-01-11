@@ -1,3 +1,6 @@
+/**
+ * set data types for api random user
+ */
 export interface Names {
   title: string;
   first: string;

@@ -1,3 +1,6 @@
+/**
+ * Handle Localstorage
+ */
 import { useState, useEffect } from "react"
 
 export const useLocalStorage = (
@@ -5,6 +8,9 @@ export const useLocalStorage = (
     initialValue?: undefined
 ) => {
     const [state, setState] = useState<any>(
+        /**
+    * A task that can handle undefined params
+    */
         () => {
             if (initialValue) return
             try {
@@ -15,6 +21,10 @@ export const useLocalStorage = (
             }
         }
     )
+
+    /**
+    * A task for create or set localstrorge 
+    */
 
     useEffect(() => {
         if (state) {

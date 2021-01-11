@@ -3,7 +3,9 @@ import * as AiIcons from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 import { Nav, Image } from "react-bootstrap"
+// nodejs library to set properties for components
 
+// My components
 import { SidebarData } from './sidebarData';
 import "../../assets/css/App.css"
 

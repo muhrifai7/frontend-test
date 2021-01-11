@@ -2,7 +2,9 @@ import React from 'react'
 import { Card, Image, Row, Spinner } from "react-bootstrap"
 import moment from 'moment'
 import * as AiIcons from 'react-icons/ai';
+// nodejs library to set properties for components
 
+// My components
 import "../assets/css/App.css"
 
 const UsersComp = ({ dataUser }: any) => {
