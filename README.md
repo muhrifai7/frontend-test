@@ -1,5 +1,3 @@
-## Available Scripts
-
 ## ✈️ Find Random Peaple
 
 A simple app to search random users
