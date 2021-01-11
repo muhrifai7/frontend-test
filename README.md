@@ -1,13 +1,9 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
 ## ✈️ Find Random Peaple
 
 A simple app to search random users
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-DEMO: https://
+DEMO: https://indochat-test-e94db.web.app/ [![Up to Date](https://github.com/ikatyang/emoji-cheat-sheet/workflows/Up%20to%20Date/badge.svg)](https://github.com/ikatyang/emoji-cheat-sheet/actions?query=workflow%3A%22Up+to+Date%22)
 
 ## Available Scripts
 
@@ -19,7 +15,7 @@ In the project directory, you can run:
 
 ## APIs
 
-- For the get users and API search, I'm used [Kiwi](https://randomuser.me/api/)
+- For the get users and API search, I'm used [randomuser](https://randomuser.me/api/)
 
 ## FAQ
 
