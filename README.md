@@ -19,7 +19,7 @@ In the project directory, you can run:
 
 ## APIs
 
-- For the get users and API search, I'm used [Kiwi](https://randomuser.me/api/)
+- For the get users and API search, I'm used [randomuser](https://randomuser.me/api/)
 
 ## FAQ
 
